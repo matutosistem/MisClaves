@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">MisClaves</string>
+    <string name="etUsuario">Usuario</string>
+    <string name="etClave">Clave</string>
+    <string name="btIngresar">Ingresar</string>
+    <string name="etNombre">Nombre</string>
+    <string name="etUsuarioC">Usuario</string>
+    <string name="etUrl">Url</string>
+    <string name="etClaveC">Clave</string>
+    <string name="etLeeClave">CodSeg</string>
+    <string name="etObserv">Escriba sus obervaciones</string>
+    <string name="btAgregar">Grabar</string>
+    <string name="btEliminar">Eliminar</string>
+
+</resources>
