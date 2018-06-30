@@ -11,5 +11,6 @@
     <string name="etObserv">Escriba sus obervaciones</string>
     <string name="btAgregar">Grabar</string>
     <string name="btEliminar">Eliminar</string>
+    <string name="tvRut">Rut</string>
 
 </resources>
