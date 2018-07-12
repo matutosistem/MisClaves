@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/grabar"
+        android:title="Grabar"
+        android:icon="@drawable/ic_grabar"/>
+    <item
+        android:id="@+id/eliminar"
+        android:title="Eliminar"
+        android:icon="@drawable/ic_eliminar"/>
+
+</menu>

@@ -189,6 +189,7 @@
         android:id="@+id/etObserv"
         android:layout_width="365dp"
         android:layout_height="50dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -197,36 +198,29 @@
         android:ems="10"
         android:hint="@string/etObserv"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/menu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvObserv" />
 
-    <Button
-        android:id="@+id/btGrabar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="76dp"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/btAgregar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etObserv" />
 
-    <Button
-        android:id="@+id/btEliminar"
-        android:layout_width="wrap_content"
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/menu"
+
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_gravity="bottom"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="@string/btEliminar"
+        app:itemTextColor="?attr/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btGrabar"
-        app:layout_constraintTop_toBottomOf="@+id/etObserv" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Lstcuentas"
+        app:menu="@menu/menu"></android.support.design.widget.BottomNavigationView>
+
+
 </android.support.constraint.ConstraintLayout>

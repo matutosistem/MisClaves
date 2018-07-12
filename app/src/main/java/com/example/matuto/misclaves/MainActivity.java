@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     private void guardarUsuario(){
 
         SharedPreferences pref=getSharedPreferences("usuarios", Context.MODE_PRIVATE);
@@ -58,11 +57,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
-
-
-
-
-
 
     }
 
