@@ -20,10 +20,7 @@ public class Cuentas {
 
     @Override
     public String toString() {
-        return "Cuentas{" +
-                "nombre='" + nombre + '\'' +
-                ", url='" + url + '\'' +
-                '}';
+        return "Cuenta : " +nombre+ "  Web : " +url;
     }
 
     public String getNombre() {

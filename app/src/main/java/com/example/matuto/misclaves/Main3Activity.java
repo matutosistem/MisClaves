@@ -109,10 +109,17 @@ public class Main3Activity extends AppCompatActivity {
 
                         }else{
 
-                            // poner los set error
 
                             if(nombrec.getText().toString().isEmpty()){
-                                nombrec.setError("Debe Ingresar Nombre");
+                                nombrec.setError("Debe Ingresar Nombre de la cuenta");
+                            }
+
+                            if(usuarioc.getText().toString().isEmpty()){
+                                usuarioc.setError("Debe ingresar Usuario cuenta");
+                            }
+
+                            if(clavec.getText().toString().isEmpty()){
+                                clavec.setError("Debe Ingresar clave cuenta");
                             }
 
                         }
