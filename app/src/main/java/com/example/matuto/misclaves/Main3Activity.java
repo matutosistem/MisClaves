@@ -2,6 +2,7 @@ package com.example.matuto.misclaves;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -124,18 +125,32 @@ public class Main3Activity extends AppCompatActivity {
 
                     case R.id.eliminar:
 
-                        /// meter dialogo de alerta a eliminar
 
-                        if (bundle.containsKey("posicion")) {
-                            cuentas.remove(bundle.getInt("posicion"));
-                            grabarArchivo();
-                            Intent intent = new Intent(Main3Activity.this, Main2Activity.class);
-                            intent.putExtra("usuario", rut);
-                            startActivity(intent);
-                            finish();
-                        }
+                        android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(Main3Activity.this);
+                        builder.setTitle("Confirmar");
+                        builder.setMessage("Esta seguro de que desea borrar la cuenta");
+                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
 
-                        break;
+                                if (bundle.containsKey("posicion")) {
+                                    cuentas.remove(bundle.getInt("posicion"));
+                                    grabarArchivo();
+                                    Intent intent = new Intent(Main3Activity.this, Main2Activity.class);
+                                    intent.putExtra("usuario", rut);
+                                    startActivity(intent);
+                                    finish();
+                                }
+
+                            }
+                        }).setNegativeButton("CANCELAR", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                            }
+                        });
+                        android.support.v7.app.AlertDialog alert = builder.create();
+                        alert.show();
+                        return true;
+
+
                 }
                 return false;
             }
