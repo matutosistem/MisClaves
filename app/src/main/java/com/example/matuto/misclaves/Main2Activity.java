@@ -1,7 +1,9 @@
 package com.example.matuto.misclaves;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,6 +33,8 @@ public class Main2Activity extends AppCompatActivity {
     Bundle bundle;
     String rut;
     String archivo;
+
+    private Cuentas selecList;
 
 
     @Override
@@ -85,9 +89,35 @@ public class Main2Activity extends AppCompatActivity {
 
         lstCuentas.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+
+
+                selecList = (Cuentas) cuentas.get(position);
+                AlertDialog.Builder builder = new AlertDialog.Builder(Main2Activity.this);
+                builder.setTitle("Confirmar");
+                builder.setMessage("Esta seguro de que desea borrar la cuenta");
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        borrarCuenta(position);
+                    }
+                }).setNegativeButton("CANCELAR", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
+                return true;
+
+
+
+
+
+
+                /*
                 borrarCuenta(position);
                 return true;
+
+                */
             }
         });
 
