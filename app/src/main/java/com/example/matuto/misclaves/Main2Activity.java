@@ -33,12 +33,10 @@ public class Main2Activity extends AppCompatActivity {
     String archivo;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-
 
 
         tvRut = (TextView) findViewById(R.id.tvRut);
@@ -46,19 +44,15 @@ public class Main2Activity extends AppCompatActivity {
         lstCuentas = (ListView) findViewById(R.id.Lstcuentas);
         bundle = getIntent().getExtras();
         rut = bundle.get("usuario").toString();
-        archivo = "cuentas"+rut+".txt";
+        archivo = "cuentas" + rut + ".txt";
 
 
-       if (bundle != null) {
+        if (bundle != null) {
 
 
             usuario = bundle.get("usuario").toString();
             tvRut.setText(bundle.get("usuario").toString());
         }
-
-
-
-
 
         leerArchivo();
 
@@ -82,7 +76,7 @@ public class Main2Activity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(Main2Activity.this, Main3Activity.class);
                 intent.putExtra("usuario", usuario);
-                intent.putExtra("posicion",position);
+                intent.putExtra("posicion", position);
                 startActivity(intent);
                 finish();
             }
@@ -100,7 +94,7 @@ public class Main2Activity extends AppCompatActivity {
 
     }
 
-    private void borrarCuenta(int posicion){
+    private void borrarCuenta(int posicion) {
         cuentas.remove(posicion);
         grabarArchivo();
         leerArchivo();
@@ -108,35 +102,33 @@ public class Main2Activity extends AppCompatActivity {
     }
 
 
-    private void grabarArchivo(){
-        try (OutputStreamWriter osw = new OutputStreamWriter(openFileOutput(archivo, Activity.MODE_PRIVATE))){
-            for (Cuentas cuenta:cuentas) {
-                osw.write(cuenta.getNombre()+"|"+cuenta.getUsuario()+"|"+cuenta.getUrl()+"|"+cuenta.getLeerClave()+"|"+cuenta.getObserv()+"\n");
+    private void grabarArchivo() {
+        try (OutputStreamWriter osw = new OutputStreamWriter(openFileOutput(archivo, Activity.MODE_PRIVATE))) {
+            for (Cuentas cuenta : cuentas) {
+                osw.write(cuenta.getNombre() + "|" + cuenta.getUsuario() + "|" + cuenta.getUrl() + "|" + cuenta.getLeerClave() + "|" + cuenta.getObserv() + "\n");
             }
-        } catch (Exception ex){
-            Log.d("TAG_", "No se pudo crear el archivo "+archivo);
+        } catch (Exception ex) {
+            Log.d("TAG_", "No se pudo crear el archivo " + archivo);
         }
     }
 
 
     public void leerArchivo() {
-       // cuentas.clear();
+        // cuentas.clear();
         try (InputStreamReader isr = new InputStreamReader(openFileInput(archivo));
              BufferedReader br = new BufferedReader(isr)) {
             String line = br.readLine();
             while (line != null) {
-                String[] datos = line.split("\\|",-2);
+                String[] datos = line.split("\\|", -2);
                 cuentas.add(new Cuentas(datos[0], datos[1], datos[2], datos[3], datos[4]));
                 line = br.readLine();
             }
 
         } catch (FileNotFoundException fex) {
-            Log.d("TAG_", "Archivo "+archivo+" no existe");
+            Log.d("TAG_", "Archivo " + archivo + " no existe");
         } catch (IOException e) {
-            Log.d("TAG_", "No se pudo leer archivo "+archivo);
+            Log.d("TAG_", "No se pudo leer archivo " + archivo);
         }
     }
-
-
 
 }
