@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,29 +38,34 @@ public class MainActivity extends AppCompatActivity {
 
     private void guardarUsuario() {
 
-
-
-        SharedPreferences pref = getSharedPreferences("usuarios", Context.MODE_PRIVATE);
-
-
-        if (pref.getString(etUsuario.getText().toString(), "No existe").equals("No existe")) {
-
-            SharedPreferences.Editor edit = pref.edit();
-            edit.putString(etUsuario.getText().toString(), etClave.getText().toString());
-            edit.commit();
+        if (etUsuario.getText().toString().indexOf('.') != -1 || etUsuario.getText().toString().indexOf('-') != -1) {
+            Toast.makeText(this, "Rut no puede tener puntos ni guión", Toast.LENGTH_SHORT).show();
+            etUsuario.setError("Rut no puede tener puntos ni guión");
 
         } else {
-            if (pref.getString(etUsuario.getText().toString(), "Clave incorrecta").equals(etClave.getText().toString())) {
 
-                Intent intent = new Intent(MainActivity.this, Main2Activity.class);
-                intent.putExtra("usuario", etUsuario.getText().toString());
-                startActivity(intent);
+            SharedPreferences pref = getSharedPreferences("usuarios", Context.MODE_PRIVATE);
+
+
+            if (pref.getString(etUsuario.getText().toString(), "No existe").equals("No existe")) {
+
+                SharedPreferences.Editor edit = pref.edit();
+                edit.putString(etUsuario.getText().toString(), etClave.getText().toString());
+                edit.commit();
+
             } else {
-                etClave.setError("Clave Incorrecta");
+                if (pref.getString(etUsuario.getText().toString(), "Clave incorrecta").equals(etClave.getText().toString())) {
+
+                    Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+                    intent.putExtra("usuario", etUsuario.getText().toString());
+                    startActivity(intent);
+                } else {
+                    etClave.setError("Clave Incorrecta");
+                }
+
             }
 
         }
-
     }
 
 }
