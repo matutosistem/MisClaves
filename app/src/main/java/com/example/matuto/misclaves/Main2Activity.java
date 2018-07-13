@@ -92,13 +92,14 @@ public class Main2Activity extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
 
 
-                selecList = (Cuentas) cuentas.get(position);
+                selecList = cuentas.get(position);
                 AlertDialog.Builder builder = new AlertDialog.Builder(Main2Activity.this);
                 builder.setTitle("Confirmar");
                 builder.setMessage("Esta seguro de que desea borrar la cuenta");
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         borrarCuenta(position);
+
                     }
                 }).setNegativeButton("CANCELAR", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -144,7 +145,7 @@ public class Main2Activity extends AppCompatActivity {
 
 
     public void leerArchivo() {
-        // cuentas.clear();
+             cuentas.clear();
         try (InputStreamReader isr = new InputStreamReader(openFileInput(archivo));
              BufferedReader br = new BufferedReader(isr)) {
             String line = br.readLine();

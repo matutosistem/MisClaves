@@ -159,7 +159,7 @@ public class Main3Activity extends AppCompatActivity {
     }
 
     public void leerArchivo() {
-        // cuentas.clear();
+            cuentas.clear();
         try (InputStreamReader isr = new InputStreamReader(openFileInput(archivo));
              BufferedReader br = new BufferedReader(isr)) {
             String line = br.readLine();
